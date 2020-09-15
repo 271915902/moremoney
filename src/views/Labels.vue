@@ -1,12 +1,14 @@
 <template>
 <div>
-  <Nav />
+  <Layout>
+    labels
+  </Layout>
 </div>
 </template>
 
 <script>
 export default {
-
+  name: 'Labels'
 }
 </script>
 
