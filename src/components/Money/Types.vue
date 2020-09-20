@@ -6,6 +6,7 @@
     </li>
 
     <li :class="value === '+' && 'selected'" @click="selectType('+')">收入
+    </li>
   </ul>
 </div>
 </template>
