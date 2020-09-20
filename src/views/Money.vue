@@ -17,9 +17,11 @@ import FormItem from '@/components/Money/FormItem.vue';
 import Tags from '@/components/Money/Tags.vue';
 
 import tagListModel from '@/models/tagListModel';
+import store from '@/store/index2.ts';
 import {
   Component
 } from 'vue-property-decorator';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const tagList = tagListModel.fetch();
 
 type RecordItem = {
@@ -41,8 +43,8 @@ type RecordItem = {
 })
 
 export default class Money extends Vue {
-  tags = tagList;
-  recordList = window.recordList;
+  tags = store.tagList;
+  recordList = store.recordList;
   record: RecordItem = {
     tags: [],
     notes: '',
@@ -56,7 +58,7 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
   saveRecord() {
-    window.createRecord(this.record);
+    store.createRecord(this.record);
   }
 }
 </script>
