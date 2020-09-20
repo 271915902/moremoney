@@ -15,27 +15,30 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+// import Vue from 'vue';
 import {
   Component
 } from 'vue-property-decorator';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import tagListModel from '@/models/tagListModel';
+
 import Button from '@/components/Button.vue';
-import store from '@/store/index2';
+import {
+  mixins
+} from 'vue-class-component';
+import TagHelper from '@/mixins/TagHelper';
 
 @Component({
   components: {
     Button
-  }
+  },
+
 })
-export default class Labels extends Vue {
-  tags = store.tagList;
-  createTag() {
-    const name = window.prompt('请输出标签名');
-    if (name) {
-      store.createTag(name);
-    }
+export default class Labels extends mixins(TagHelper) {
+  get tags() {
+    return this.$store.state.tagList;
+  }
+  beforeCreate() {
+    this.$store.commit('fetchTags');
   }
 }
 </script>
@@ -51,7 +54,7 @@ export default class Labels extends Vue {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #E6E6E6;
 
     svg {
       width: 18px;
