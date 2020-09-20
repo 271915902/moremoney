@@ -1,6 +1,5 @@
 <template>
 <Layout>
-
   <div class="navBar">
     <Icon class="leftIcon" name="left" @click="goBack" />
     <span class="title">编辑标签</span>
@@ -12,7 +11,6 @@
   <div class="button-wrapper">
     <Button @click="remove">删除标签</Button>
   </div>
-
 </Layout>
 </template>
 
@@ -22,11 +20,9 @@ import {
   Component
 } from 'vue-property-decorator';
 import tagListModel from '@/models/tagListModel';
-
 import FormItem from '@/components/Money/FormItem.vue';
 import Button from '@/components/Button.vue';
 @Component({
-
   components: {
     Button,
     FormItem
@@ -55,11 +51,14 @@ export default class EditLabel extends Vue {
   }
   remove() {
     if (this.tag) {
-      tagListModel.remove(this.tag.id);
+      if (tagListModel.remove(this.tag.id)) {
+        this.$router.back();
+      } else {
+        window.alert('删除失败');
+      }
     }
   }
   goBack() {
-    console.log('back');
     this.$router.back();
   }
 }

@@ -1,6 +1,5 @@
 <template>
 <Layout class-prefix="layout">
-  {{record}}
   <NumberPad :value.sync="record.amount" @submit="saveRecord" />
   <Types :value.sync="record.type" />
   <div class="notes">
@@ -22,6 +21,9 @@ import {
 } from 'vue-property-decorator';
 import recordListModel from '@/models/recordListModel';
 import tagListModel from '@/models/tagListModel';
+const recordList = recordListModel.fetch();
+const tagList = tagListModel.fetch();
+
 type RecordItem = {
   tags: string[];
   notes: string;
@@ -30,8 +32,7 @@ type RecordItem = {
   // eslint-disable-next-line @typescript-eslint/type-annotation-spacing
   createdAt ? : Date;
 }
-const recordList = recordListModel.fetch();
-const tagList = tagListModel.fetch();
+
 @Component({
   components: {
     Tags,
@@ -40,6 +41,7 @@ const tagList = tagListModel.fetch();
     NumberPad
   }
 })
+
 export default class Money extends Vue {
   tags = tagList;
   recordList: RecordItem[] = recordList;
@@ -59,7 +61,6 @@ export default class Money extends Vue {
     const record2: RecordItem = recordListModel.clone(this.record);
     record2.createdAt = new Date();
     this.recordList.push(record2);
-
   }
   @Watch('recordList')
   onRecordListChange() {

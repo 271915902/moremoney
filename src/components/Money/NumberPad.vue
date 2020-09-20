@@ -13,7 +13,7 @@
     <button @click="inputContent">7</button>
     <button @click="inputContent">8</button>
     <button @click="inputContent">9</button>
-    <button class="ok">OK</button>
+    <button @click="ok" class="ok">OK</button>
     <button @click="inputContent" class="zero">0</button>
     <button @click="inputContent">.</button>
   </div>
@@ -32,7 +32,8 @@ export default class NumberPad extends Vue {
   output = this.value.toString();
   inputContent(event: MouseEvent) {
     const button = (event.target as HTMLButtonElement);
-    const input = button.textContent as string;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const input = button.textContent!;
     if (this.output.length === 16) {
       return;
     }
@@ -78,7 +79,7 @@ export default class NumberPad extends Vue {
     font-family: Consolas, monospace;
     padding: 9px 16px;
     text-align: right;
-    min-height: 72px;
+    height: 72px;
   }
 
   .buttons {

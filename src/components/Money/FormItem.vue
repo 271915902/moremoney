@@ -2,7 +2,7 @@
 <div>
   <label class="formItem">
     <span class="name">{{this.fieldName}}</span>
-    <input type="text" :value="value" @input="onValueChanged($event.target.value)" :placeholder="this.placeholder">
+    <input type="text" :value="value" @input="onValueChanged($event.target.value)" :placeholder="placeholder">
   </label>
 </div>
 </template>
@@ -12,7 +12,7 @@ import Vue from 'vue';
 import {
   Component,
   Prop,
-  Watch
+
 } from 'vue-property-decorator';
 @Component
 export default class FormItem extends Vue {
@@ -24,7 +24,6 @@ export default class FormItem extends Vue {
   }) fieldName!: string;
   // eslint-disable-next-line @typescript-eslint/type-annotation-spacing
   @Prop() placeholder ? : string;
-  @Watch('value')
   onValueChanged(value: string) {
     this.$emit('update:value', value);
   }
@@ -34,7 +33,6 @@ export default class FormItem extends Vue {
 <style lang="scss" scoped>
 .formItem {
   font-size: 14px;
-  background: #f5f5f5;
   padding-left: 16px;
   display: flex;
   align-items: center;
