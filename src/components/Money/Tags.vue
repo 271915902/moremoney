@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts">
-// import Vue from 'vue';
 import {
   Component,
 
@@ -20,10 +19,8 @@ import {
   mixins
 } from 'vue-class-component';
 import TagHelper from '@/mixins/TagHelper';
-
 @Component
 export default class Tags extends mixins(TagHelper) {
-
   selectedTags: string[] = [];
   get tagList() {
     return this.$store.state.tagList;
@@ -40,7 +37,6 @@ export default class Tags extends mixins(TagHelper) {
     }
     this.$emit('update:value', this.selectedTags);
   }
-
 }
 </script>
 
