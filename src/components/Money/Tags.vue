@@ -42,7 +42,7 @@ export default class Tags extends mixins(TagHelper) {
 
 <style lang="scss" scoped>
 .tags {
-  background: white;
+  background: #FFFBEE;
   font-size: 14px;
   padding: 16px;
   flex-grow: 1;
@@ -54,7 +54,7 @@ export default class Tags extends mixins(TagHelper) {
     flex-wrap: wrap;
 
     >li {
-      $bg: #D9D9D9;
+      $bg: #ECC415;
       background: $bg;
       $h: 24px;
       height: $h;
@@ -66,7 +66,7 @@ export default class Tags extends mixins(TagHelper) {
 
       &.selected {
         background: darken($bg, 50%);
-        color: white;
+        color: white
       }
     }
   }

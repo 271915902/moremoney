@@ -1,5 +1,5 @@
 <template>
-<nav>
+<nav class="bcc">
   <router-link to="/money" class="item" active-class="selected">
     <Icon name="money" />
     记账
@@ -47,5 +47,9 @@ nav {
   >.item.selected {
     color: $color-highlight;
   }
+}
+
+.bcc {
+  background-color: #fffbee;
 }
 </style>
