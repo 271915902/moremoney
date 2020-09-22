@@ -66,7 +66,7 @@ export default class Tags extends mixins(TagHelper) {
 
       &.selected {
         background: darken($bg, 50%);
-        color: white
+        color: white;
       }
     }
   }
